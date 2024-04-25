@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../labs/style3.css">
+    <title>lab1</title>
+</head>
+<body>
+    <form action="post">
+        <div class="block">
+            <div style="text-align: center; padding-top: 20px;">
+                <h1>Оставить отзыв</h1>
+            </div>
+            <div class="content">
+                <h4>Имя</h4>
+                <input type="text" name="name" id="name" placeholder="Ваше имя">
+            </div>
+
+            <div class="content">
+                <h4>Email</h4>
+                <input type="email" name="mail" id="mail" placeholder="test@mail.com">
+            </div>
+
+            <div class="content">
+                <h4>Загаловок</h4>
+                <input type="text" name="title" id="title" placeholder="Загаловок">
+            </div>
+
+            <div class="content">
+                <h4>Оставит отзыв</h4>
+                <textarea name="comment" cols="40" rows="3" id="comment"></textarea>
+            </div>
+            <div class="btn">
+                <button type="button" onclick="Valid()">Отправить</button>
+            </div>
+        </div>
+    </form>
+
+    <script>
+        function Valid() {
+            let re = /^[\w-\.]+@[\w-]+\.[a-z]{2,4}$/i;
+
+            let myMail = document.getElementById('mail').value;
+            let myName = document.getElementById('name').value;
+            let myTitle = document.getElementById('title').value;
+            let myCommnet = document.getElementById('comment').value;
+
+            let valid = re.test(myMail);
+            if (!myName) alert("Имя не может быть пустым!")
+            else if (!valid) alert("Адрес элeктронной почты введен неправильно!");
+            else if (!myTitle) alert("Загаловок не может быть пустым!")
+            else if (!myCommnet) alert("Комментарий не может быть пустым!")
+            else alert("Отзыв отправлен");
+        }
+
+    </script>
+
+</body>
+</html>

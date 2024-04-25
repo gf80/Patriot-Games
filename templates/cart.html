@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="paralax"></div>
+
+<div class="container">
+
+    {% if games | length == 0 %}    
+        <div class="text-center">
+            <p class="text-white text-center fs-1">Игр нет!</p>
+            <img src="/static/image/notFound.jpg" alt="" name="notF" style="max-height: 600px; max-width: 600px; margin-bottom: 50px;">
+        </div>
+        
+    
+    {% else %}
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-10"> 
+            <div class="row">
+    {% for game in games %}
+    <div class="col games text-center d-flex justify-content-center">
+        <div class="card-content">
+        <a href="../game/{{game.id}}">
+            <img src="../static/image/{{game.dir_photo}}/main.jpg" class="rounded rounde-end" height="300px" width="190px">
+            <br>
+            <br>
+            <h3 class="text-white">{{game.name}}</h1>   
+            <h5 class="text-white">{{game.price}} руб.</h5>
+        </a>    
+        <div class="input-group mb-3" style="max-width: 180px;">
+            <input type="number" class="form-control input_price" placeholder="" id="{{game.price}}" value="1" step="1" oninput="Total(this)">
+        </div>
+        <button class="btn btn-outline-secondary mb-5" onclick='Fromcart("{{game.id}}")' type="submit">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+            <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
+          </svg>
+        </button>
+        </div>
+    </div>
+    {% endfor %}
+
+</div>    
+        </div>
+    <div class="col d-flex justify-content-center"> 
+        <div class="card mb-5" style="background-color: #06141B; max-height: 300px;">
+            <h5 class="card-header text-white">Детали заказа</h5>
+            <div class="card-body text-white">
+            <h5 class="card-title">Сумма: <span id="total_price">{{total_price}}</span></h5>
+            <p class="card-text">Покупка придет на ваш адрес</p>
+            <button class="btn btn-primary w-100 mb-2 fs-5" data-bs-toggle="modal" data-bs-target="#Modal1" >Купить</button>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endif %}
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="Modal1" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content" >
+        <div class="modal-header">
+          <h1 class="modal-title fs-5"  id="ModalLabel">Оплата</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body d-flex justify-content-center">
+            <div class="block text-center">
+              <h2>Ваши данные</h2>
+              <div class="content">
+                  <label for="name1">Имя</label>
+                  <input type="text" placeholder="Имя" name="name1" id="name1">
+              </div>
+              <div class="content">
+                  <label for="mail1">Email</label>
+                  <input type="email" name="mail1" id="mail1" placeholder="test@test.com">
+              </div>
+              <div class="content">
+                <label for="">Оплата: <span style="color: red;">Только карта</span></label>
+              </div>
+          </div>
+
+    
+        <script>
+            function Valid1() {
+                let re = /^[\w-\.]+@[\w-]+\.[a-z]{2,4}$/i;
+    
+                let myMail = document.getElementById('mail1').value;
+                let myName = document.getElementById('name1').value;
+    
+                let valid = re.test(myMail);
+                if (!myName) alert("Имя не может быть пустым!")
+                else if (!valid) alert("Адрес элeктронной почты введен неправильно!");
+                else 
+                {
+                  alert("Оплачено!");
+                }
+            }
+    
+        </script>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+          <button type="button" class="btn btn-primary" onclick="Valid1()">Купить</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+
+    function Fromcart(game_id){
+        fetch("remove_from_cart/" + game_id, {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ game_id: game_id })
+        })
+        .then(response => {
+        window.location.reload();
+      })
+    }
+
+    const total_price = document.getElementById("total_price");
+
+    function Total(element) {
+        var total = 0;
+
+        var value = parseInt(element.value);
+
+        console.log(value)
+
+        if (isNaN(value) || value <= 0) {
+            element.value = Nan;
+        }
+        else {
+            let games = document.getElementsByClassName("input_price");
+            console.log(games);
+            for (let i = 0; i < games.length; i++) {
+                console.log(games[i])
+                total += parseInt(games[i].id) * parseInt(games[i].value);
+            }
+            total_price.textContent = total;
+        }
+}
+
+</script>
+
+
+{% endblock %}

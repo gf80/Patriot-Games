@@ -1,0 +1,152 @@
+body {
+    background-color: #11212d !important;
+}
+
+.header {
+    background-color: #06141B !important;
+}
+
+.header a:hover {
+    color: rgb(116, 116, 116);
+}
+
+.header a {
+    color: white;
+    text-decoration: none;
+}
+
+.offcanvas-body a {
+    color: white;
+    text-decoration: none;
+}
+
+.offcanvas-body a:hover {
+    color: rgb(116, 116, 116);
+}
+
+#input {
+    background-color: rgb(32, 32, 32);
+    margin-left: 10px;
+    border-color: rgb(32, 32, 32);
+}
+
+.paralax {
+    background-image: url(../image/banner_main.jpg);
+    min-height: 500px;
+    margin-bottom: 50px;
+    background-color: rgba(6, 20, 27, 0.7);
+    background-blend-mode: overlay;
+    background-size: cover;
+
+
+}
+
+
+.cards {
+    min-width: 100%;
+    min-height: 200px;
+    scrollbar-gutter: stable;
+}
+
+.cards {
+    display: flex
+}
+
+
+.cards {
+    overflow-x: auto;
+}
+
+.card-content {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.card-content a {
+    text-decoration: none;
+}
+.game {
+    width: 200px;
+    height: 200px;
+    border: 1px solid #ccc;
+    margin: 10px;
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+    padding: 20px;
+}
+
+.filter {
+    margin-bottom: 10px;
+}
+.gallery {
+    text-align: center;
+}
+
+.main-image {
+    width: auto;
+    min-width: 360px;
+    height: 361px;
+}
+
+.thumbnail {
+    width: 100px;
+    height: auto;
+    margin: 5px;
+    cursor: pointer;
+    height: 56px;
+
+}
+
+.thumbnail.active {
+    border: 1px solid blue;
+}
+.popup-phone-wrapper {
+    position: fixed;
+    opacity: .6;
+    text-align: center;
+    z-index: 1000;
+    background-color: #000000;
+    color: #ffffff;
+    width: 64px;
+    height: 64px;
+    line-height: 60px;
+    right: 50px;
+    bottom: 70px;
+    cursor: pointer;
+    transition: 0.1s;
+}
+
+.popup-phone-wrapper:hover {
+    opacity: .9;
+}
+
+.content {
+    clear:both; 
+    text-align:right;
+    line-height:25px;  
+    padding-bottom: 5px; 
+}
+
+label {
+    float:left;
+    padding-right:10px;
+}
+
+.block {
+    float:left;
+}
+
+.hidden {
+    display: none !important;
+}
+.visible {
+    display: flex !important;
+}
+
+.games {
+    transition: transform 0.3s ease;
+}
+
+.games:hover{
+    transform: translateY(-9px);
+}

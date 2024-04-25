@@ -1,0 +1,19 @@
+.block {
+    margin-left: auto;
+    margin-right: auto;
+    width: 600px;
+}
+
+.imgs {
+    display: flex;
+}
+
+.thumbail {
+    width: 95px;
+    height: 150px;
+}
+
+#kartinka {
+    width: 285px;
+    height: 450px;
+}

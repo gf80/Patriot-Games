@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="paralax"></div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div id="carouselExampleIndicators" class="carousel slide">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+            aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+            aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+            aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <a href="game/2">
+            <img src="../static/image/minecraft/banner.jpg" class="d-block w-100 rounded float-start" alt="...">
+          </a>
+          </div>
+          <div class="carousel-item">
+            <a href="game/1">
+            <img src="../static/image/atomic/banner.jpg" class="d-block w-100" alt="...">
+          </a>
+          </div>
+          <div class="carousel-item">
+            <a href="game/4">
+            <img src="../static/image/doom/banner.jpg" class="d-block w-100" alt="...">
+          </a>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
+    </div>
+    <div class="col">
+      <div class="text-center">
+        <h1 class="text-white" id="name">MINECRAFT</h1>
+        <br>
+        <br>
+      </div>
+
+      <div class="mx-5 text-white" style="font-family:Verdana, Geneva, Tahoma, sans-serif;">
+        <p id="ganre">Жанр: песочница</p>
+        <br>
+        <p id="description">Исследуй собственный уникальный мир, переживи ночь и создай все, что только сможешь
+          вообразить!</p>
+        <br>
+        <p id="rating">Рейтинг: 10/10</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+<div style="height: 100px"></div>
+
+<div class="conteiner">
+  <div class="text-center">
+    <h1 class="text-white">Топ 10 игр</h1>
+  </div>
+</div>
+
+<div style="height: 50px"></div>
+
+<div class="container">
+  <section class="cards">
+    {% for game in games %}
+    <div class="card-content me-5 games">
+      <a href="game/{{game.id}}">
+        <img src="../static/image/{{game.dir_photo}}/main.jpg" class="rounded rounde-end" height="300px" width="190px">
+        <br>
+        <br>
+        <h3 class="text-white">{{game.name}}</h1>
+          <br>
+          <h5 class="text-white">{{game.price}} руб.</h5>
+      </a>
+    </div>
+    {% endfor %}
+  </section>
+</div>
+
+<div style="height: 150px;"></div>
+
+<script>
+  const myCarousel = document.getElementById('carouselExampleIndicators')
+
+  let games = [
+    {
+      "name": "MINECRAFT",
+      "ganre": "Песочница",
+      "description": "Исследуй собственный уникальный мир, переживи ночь и создай все, что только сможешь вообразить!",
+      "rating": "10/10"
+    },
+    {
+      "name": "ATOMIC HEART",
+      "ganre": "Шутер",
+      "description": "Действие Atomic Heart происходит на территории «Предприятия 3826» — главного научно-исследовательского центра Советского Союза в альтернативном 1955 году.",
+      "rating": "10/10"
+    },
+    {
+      "name": "DOOM",
+      "ganre": "Шутер",
+      "description": "События оригинальной игры Doom происходят в захваченном демонами комплексе Объединённой Аэрокосмической Корпорации. Повествование сюжета идет от лица одного из охранников комплекса...",
+      "rating": "10/10"
+    }
+  ];
+
+  let name = document.getElementById("name");
+  let ganre = document.getElementById("ganre");
+  let description = document.getElementById("description");
+  let rating = document.getElementById("rating");
+
+  myCarousel.addEventListener('slide.bs.carousel', event => {
+    name.innerText = games[event.to]["name"];
+    ganre.innerText = "Жанр: " + games[event.to]["ganre"];
+    description.innerText = games[event.to]["description"];
+    rating.innerText = "Рейтинг: " + games[event.to]["rating"];
+  })
+
+</script>
+
+{% endblock %}

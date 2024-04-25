@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../labs/style5.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="block">
+        <div class="imgs">
+            <img src="1.jpg" class="thumbail" alt="">
+            <img src="2.jpg" class="thumbail" alt="">
+            <img src="3.jpg" class="thumbail" alt="">
+        </div>
+        <img src="3.jpg" id="kartinka" alt="">
+        <div>
+        <button onclick="next()">Следующее изображение</button>
+    </div>
+    </div>
+
+    <script>
+
+        let i = "0";
+        arr = ["1", "2", "3"];
+        function next()
+        {
+            if(i == arr.length){i="0";}
+            kartinka.src=arr[i]+'.jpg';
+            i++;
+        }
+
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../labs/style4.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="popupContainer" class="popup">
+        <div class="popup-content">
+          <span class="close" onclick="closePopup()">&times;</span>
+          <h2>Заголовок</h2>
+            <div id="info">
+                
+            </div>
+        </div>
+        
+      </div>
+    <div class="block">
+        <h2>Ваши данные</h2>
+        <div class="content">
+            <label for="fam">Фамилия</label>
+            <input type="text" placeholder="Фамилия" name=fam id="fam" value="ИВАНОВ" onchange="Up('fam')">
+        </div>
+        <div class="content">
+            <label for="name">Имя</label>
+            <input type="text" placeholder="Имя" name="name" id="name" value="ИВАН" onchange="Up('name')">
+        </div>
+        <div class="content">
+            <label for="tf">Номер телефона</label>
+            <input type="text" name="tf" id="tf" placeholder="" value="">
+        </div>
+        <div class="content">
+            <label for="age">Возраст</label>
+            <input type="number" name="age" id="age" placeholder="Возраст">
+        </div>
+        <div class="btns">
+            <button id="reg" onclick="reg()">Зарегистрировать карту</button>
+            <button onclick="Clear()">Очистить данные</button>
+        </div>
+    </div>
+    <script>
+
+        function Up(id_name){
+            let myName = document.getElementById(id_name);
+            myName.value = myName.value.toUpperCase();
+        }
+
+        function reg() {
+            let myAge = parseInt(document.getElementById("age").value);
+            console.log(myAge);
+            if (myAge>=18) {
+                document.getElementById("popupContainer").style.display = "block";
+                const info = document.getElementById("info");
+                info.innerHTML = "<p>Фамилия: " + document.getElementById("fam").value + "</p>";
+                info.innerHTML += "<p>Имя: " + document.getElementById("name").value + "</p>";
+                info.innerHTML += "<p>Номер карточки: " + (Math.floor(Math.random() * (999999 - 100000)) + 100000).toString() + "</p>";
+            }
+            else {
+                document.getElementById("popupContainer").style.display = "block";
+                const info = document.getElementById("info");
+                info.innerHTML = "<p>Карта выдается только после 18 лет</p>";
+            }
+        }
+
+        function closePopup() {
+            document.getElementById("popupContainer").style.display = "none";
+        }
+
+        function Clear() {
+            document.getElementById("fam").value = "ИВАНОВ";
+            document.getElementById("name").value = "ИВАН";
+            document.getElementById("tf").value = "+7131313513";
+            document.getElementById("age").value = "0";
+        }
+
+    </script>
+
+</body>
+</html>

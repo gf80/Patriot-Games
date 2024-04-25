@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../static/css/style.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <title>Магазин</title>
+</head>
+<body>
+  <div class="position-fixed fixed-top">
+    <header class="p-3 text-white header">
+        <div class="container">
+          <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+              <li><h2 style="color: rgb(0, 168, 197);"><b>Patriot Games</b></h2></li>
+            </ul>
+
+    
+            <div class="text-end">
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <li><a href="/" class="px-2 fs-5">Главная</a></li>
+                    <li><a href="/games" class="px-2 fs-5">Игры</a></li>
+                    <li><a href="/about" class="px-2 fs-5">О нас</a></li>
+                    <li><a href="/news" class="px-2 fs-5">Новости</a></li>
+                    <li><a href="/cart" class="px-2 fs-5 mx-3"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-minecart" viewBox="0 0 16 16">
+                      <path d="M4 15a1 1 0 1 1 0-2 1 1 0 0 1 0 2m0 1a2 2 0 1 0 0-4 2 2 0 0 0 0 4m8-1a1 1 0 1 1 0-2 1 1 0 0 1 0 2m0 1a2 2 0 1 0 0-4 2 2 0 0 0 0 4M.115 3.18A.5.5 0 0 1 .5 3h15a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 14 12H2a.5.5 0 0 1-.491-.408l-1.5-8a.5.5 0 0 1 .106-.411zm.987.82 1.313 7h11.17l1.313-7z"/>
+                    </svg></a></li>
+                </ul>
+              
+            </div>
+          </div>
+        </div>
+      </header>
+      
+      <div class="offcanvas offcanvas-start" style="background-color: #06141B;" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title text-white text-center fs-2" id="offcanvasLabel">Меню</h5>
+          <button type="button" class="btn btn-dark rounded-pill" data-bs-dismiss="offcanvas" aria-label="Close">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+              <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
+            </svg>
+          </button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item my-2">
+              <a class="fs-4" href="/about">О нас</a>
+            </li>
+          </ul>
+  
+  
+        </div>
+      </div>
+      
+  </div>
+
+  
+
+  {% block content %}
+  
+  {% endblock %}
+
+      <footer class="py-3" style="background-color: #06141B;">
+        
+          <ul class="nav justify-content-center border-bottom pb-4 mb-3 mt-4">
+              <li class="mx-3"><a class="text-decoration-none text-white" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16">
+                <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334q.002-.211-.006-.422A6.7 6.7 0 0 0 16 3.542a6.7 6.7 0 0 1-1.889.518 3.3 3.3 0 0 0 1.447-1.817 6.5 6.5 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.32 9.32 0 0 1-6.767-3.429 3.29 3.29 0 0 0 1.018 4.382A3.3 3.3 0 0 1 .64 6.575v.045a3.29 3.29 0 0 0 2.632 3.218 3.2 3.2 0 0 1-.865.115 3 3 0 0 1-.614-.057 3.28 3.28 0 0 0 3.067 2.277A6.6 6.6 0 0 1 .78 13.58a6 6 0 0 1-.78-.045A9.34 9.34 0 0 0 5.026 15"/>
+              </svg></a></li>
+              <li class="mx-3"><a class="text-decoration-none text-white" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-telegram" viewBox="0 0 16 16">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.287 5.906q-1.168.486-4.666 2.01-.567.225-.595.442c-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294q.39.01.868-.32 3.269-2.206 3.374-2.23c.05-.012.12-.026.166.016s.042.12.037.141c-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8 8 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629q.14.092.27.187c.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.4 1.4 0 0 0-.013-.315.34.34 0 0 0-.114-.217.53.53 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09"/>
+              </svg></a></li>
+              <li class="mx-3"><a class="text-decoration-none text-white" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+                <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/>
+              </svg></a></li>
+          </ul>
+          <div style="height: 50px"></div>
+          <p class="text-center" style="color: gray;">© 2023 Company, Inc</p>
+          <p class="text-center" style="color: gray;">Все права сохранены</p>
+          <div style="height: 50px"></div>
+      </footer>
+
+        <div class="popup-phone-wrapper rounded-pill" data-bs-toggle="modal" data-bs-target="#Modal" style="display: block;">
+          <span class="scroll-top-inner text-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-telephone-fill" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
+            </svg>
+          </span>
+        </div>
+      
+        
+        <!-- Modal -->
+        <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content" >
+              <div class="modal-header">
+                <h1 class="modal-title fs-5"  id="ModalLabel">Поддержка</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body d-flex justify-content-center">
+                <form action="post">
+                  <div class="block text-center">
+                    <h2>Ваши данные</h2>
+                    <div class="content">
+                        <label for="name_person">Имя</label>
+                        <input type="text" placeholder="Имя" name="name_person" id="name_person">
+                    </div>
+                    <div class="content">
+                        <label for="mail">Email</label>
+                        <input type="email" name="mail" id="mail" placeholder="test@test.com">
+                    </div>
+                    <div class="content">
+                      <label for="title">Загаловок</label>
+                      <input type="text" name="title" id="title">
+                  </div>
+                  <div class="content">
+                    <label for="comment">Отзыв</label>
+                    <textarea type="text" name="comment" id="comment"></textarea>
+                </div>
+                </div>
+                
+              </form>
+          
+              <script>
+                  function Valid() {
+                      let re = /^[\w-\.]+@[\w-]+\.[a-z]{2,4}$/i;
+          
+                      let myMail = document.getElementById('mail').value;
+                      let myName = document.getElementById('name_person').value;
+                      let myTitle = document.getElementById('title').value;
+                      let myCommnet = document.getElementById('comment').value;
+          
+                      let valid = re.test(myMail);
+                      if (!myName) alert("Имя не может быть пустым!")
+                      else if (!valid) alert("Адрес элeктронной почты введен неправильно!");
+                      else if (!myTitle) alert("Загаловок не может быть пустым!")
+                      else if (!myCommnet) alert("Комментарий не может быть пустым!")
+                      else 
+                      {
+                        alert("Отзыв отправлен");
+                      }
+                  }
+          
+              </script>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                <button type="button" class="btn btn-primary" onclick="Valid()">Отправить</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

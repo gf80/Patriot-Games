@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="paralax"></div>
+<div class="container mt-5">
+    {% if elements|length > 0 %}
+    <div class="news mb-3">
+    {% for element in elements %}
+      <div class="card mb-5" style="background-color: #253745 !important;">
+        <div class="card-body text-center   ">
+          <h2 class="card-title text-white">{{element['title']|safe}}</h2>
+          <p class="card-text text-white fs-5">{{element['content']|safe}}</p>
+        </div>
+      </div>
+    {% endfor %}
+    {% else %}
+    
+    <div class="text-center">
+        <p class="text-white text-center fs-1">Статей нет!</p>
+        <img src="/static/image/notFound.jpg" alt="" name="notF" style="max-height: 600px; max-width: 600px; margin-bottom: 50px;">
+    </div>
+    {% endif %}
+</div>
+</div>
+{% endblock %}

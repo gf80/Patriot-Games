@@ -1,0 +1,50 @@
+body {
+    background-color:rgb(34, 91, 197);
+}
+
+.block {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    background-color: rgb(204, 195, 195);
+    max-width: 500px;
+    min-height: 500px;
+}
+
+input {
+    background-color: aliceblue;
+    height: 25px;
+    width: 200px;
+    border-radius: 5px;
+    border: none;
+}
+
+.content {
+    margin-left: 25px;
+}
+
+.content textarea {
+    margin-bottom: 25px;
+    background-color: aliceblue;
+    max-width: 440px;
+    border-radius: 5px;
+    border: none;
+}
+.btn {
+    text-align: center;
+}
+
+button {
+    margin-bottom: 25px;
+    font-size: 16px;
+    background-color: green;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    height: 30px;
+    width: 100px;
+}
+
+button:hover {
+    background-color: rgb(0, 175, 0);
+}

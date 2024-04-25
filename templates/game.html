@@ -1,0 +1,182 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="paralax"></div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8"> 
+            <div class="row">
+                <div class="gallery">
+                    <img src="/static/image/{{game1.dir_photo}}/{{photos[0]}}" alt="Главное изображение" class="main-image w-75" id="mainImage">
+                
+                    <div id="thumbnails">
+                        {% for photo in photos %}
+                        <img src="/static/image/{{game1.dir_photo}}/{{photo}}" class="thumbnail" onclick="changeImage(this)">
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col mx-1    "> 
+                <h1 class="text-white text-center fs-2">{{game1.name}}</h1>
+                <div class="row">
+                    <div class="col">
+                        <div id="rating_bar" class="d-flex">
+                            
+                            <button id="rate_1" class="text-white text-decoration-none fs-5 btn btn-link mx-0" href="#" onclick="rate('1')">&#9734;</button>
+                            <button id="rate_2" class="text-white text-decoration-none fs-5 btn btn-link" href="#" onclick="rate('2')">&#9734;</button>
+                            <button id="rate_3" class="text-white text-decoration-none fs-5 btn btn-link" href="#" onclick="rate('3')">&#9734;</button>
+                            <button id="rate_4" class="text-white text-decoration-none fs-5 btn btn-link" href="#" onclick="rate('4')">&#9734;</button>
+                            <button id="rate_5" class="text-white text-decoration-none fs-5 btn btn-link" href="#" onclick="rate('5')">&#9734;</button>
+                        </div>
+                    </div>
+                    <div class="col text-center mt-2">
+                        <a href="/community/{{game1.id}}">Отзывы</a>
+                    </div>
+                </div>
+                <br>
+                <button class="btn btn-secondary w-100 mb-2 fs-5" onclick="Oncart()">В корзину</button>
+                <button class="btn btn-primary w-100 mb-2 fs-5" data-bs-toggle="modal" data-bs-target="#Modal1" >Купить</button>
+                <br>
+                <br>
+                <h5 class="text-white text-right">Цена: {{game1.price}} руб.</h5>
+                <br>
+                <h6 class="text-white border-bottom mb-2 border-secondary pb-2">Характеристика</h6>
+                <h6 class="text-white border-bottom mb-2 border-secondary pb-2"><span class="fs-6" style="color: darkgray;">Разработчик: </span>{{game1.author}}</h6>
+                <h6 class="text-white border-bottom mb-2 border-secondary pb-2"><span class="fs-6" style="color: darkgray;">Жанр: </span>{{game1.genre}}</h6>
+                <h6 class="text-white border-bottom mb-2 border-secondary pb-2"><span class="fs-6" style="color: darkgray;">Дата релиза: </span>{{game1.date}}</h6>
+                <h6 class="text-white border-bottom mb-2 border-secondary pb-2"><span class="fs-6" style="color: darkgray;">Платформа: </span>{{game1.platform}}</h6>
+                <h6 class="text-white border-bottom mb-2 border-secondary pb-2"><span class="fs-6" style="color: darkgray;">Рейтинг: </span>{{game1.rating}}/10</h6>
+        </div>
+    </div>
+    <br>
+    <br>
+    
+    <div style="background-color: #253745; border-radius: 2px;">
+        <p class="text-white p-4">{{game1.description}}</p>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="Modal1" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content" >
+        <div class="modal-header">
+          <h1 class="modal-title fs-5"  id="ModalLabel">Оплата</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body d-flex justify-content-center">
+            <div class="block text-center">
+              <h2>Ваши данные</h2>
+              <div class="content">
+                  <label for="name1">Имя</label>
+                  <input type="text" placeholder="Имя" name="name1" id="name1">
+              </div>
+              <div class="content">
+                  <label for="mail1">Email</label>
+                  <input type="email" name="mail1" id="mail1" placeholder="test@test.com">
+              </div>
+              <div class="content">
+                <label for="">Оплата: <span style="color: red;">Только карта</span></label>
+              </div>
+          </div>
+
+    
+        <script>
+            function Valid1() {
+                let re = /^[\w-\.]+@[\w-]+\.[a-z]{2,4}$/i;
+    
+                let myMail = document.getElementById('mail1').value;
+                let myName = document.getElementById('name1').value;
+    
+                let valid = re.test(myMail);
+                if (!myName) alert("Имя не может быть пустым!")
+                else if (!valid) alert("Адрес элeктронной почты введен неправильно!");
+                else 
+                {
+                  alert("Оплачено!");
+                }
+            }
+    
+        </script>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+          <button type="button" class="btn btn-primary" onclick="Valid1()">Отправить</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Подключаем Bootstrap JS (необходимо для работы выпадающего списка) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    function changeImage(thumbnail) {
+        // Получаем ссылку на главное изображение
+        var mainImage = document.getElementById('mainImage');
+        
+        // Заменяем src главного изображения на src миниатюры
+        mainImage.src = thumbnail.src;
+        
+        // Удаляем класс 'active' у всех миниатюр
+        var thumbnails = document.getElementsByClassName('thumbnail');
+        for (var i = 0; i < thumbnails.length; i++) {
+            thumbnails[i].classList.remove('active');
+        }
+        
+        // Добавляем класс 'active' к выбранной миниатюре
+        thumbnail.classList.add('active');
+    }
+
+</script>
+<script>
+
+    function Oncart(){
+        fetch('/add_to_cart/{{game1.id}}', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ game_id: "{{game1.id}}" })
+      })
+      .then(response => {
+        window.location.href = "/cart";
+      })
+    }
+
+    function rate(star_id) {
+      fetch('/rate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ star_id: star_id, game_id: "{{game1.id}}" })
+      })
+      .catch(error => {
+        console.error('Ошибка:', error);
+      });
+      let spans = document.getElementById("rating_bar").getElementsByTagName('button');
+
+        for(i=0;i<star_id;i++)
+            spans[i].innerText='★';
+        for(i=star_id;i<5;i++)
+            spans[i].innerText='✰';
+    }
+
+    // Вызываем функцию rate для каждой звезды, чтобы подсветить уже выбранные
+    window.onload = function() {
+        let spans = document.getElementById("rating_bar").getElementsByTagName('button');
+        console.log(spans)
+        for(i=0;i<parseInt("{{ratings}}");i++){
+            console.log(i);
+            spans[i].innerText='★';
+        }
+        for(i=parseInt("{{ratings}}");i<5;i++) {
+
+            spans[i].innerText='✰';
+        }
+    };
+</script>
+
+
+{% endblock %}

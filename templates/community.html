@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="paralax"></div>
+<div class="container">
+    <div class="row my-5" style="background-color: #06141B;">
+      <div class="col">
+        <div class="overflow-auto" style="max-height: 500px;" id="messages">
+          <!-- Ваши сообщения здесь -->
+            {% for message in messages %}
+                <p class="text-white fs-4"><span class="fs-6 mb-3" style="color: gray;">#{{message["id"]}}</span> <span class="fs-4">user#{{name}}: </span>{{message["text"] | safe}}</p>
+                
+            {% endfor %}
+          <!-- Добавьте здесь больше сообщений по мере необходимости -->
+        </div>
+      </div>
+    </div>
+    <div class="d-flex mt-3 mb-5">
+      <input class="form-control me-2" style="background-color: rgb(219, 219, 219); border: none;" type="text" placeholder="Сообщение" name="text" id="text">
+      <button class="btn btn-success" type="submit" onclick="Send()">Отправить</button>
+    </div>
+  </div>
+  
+  <script>
+    function Send(){
+      textMessage = document.getElementById("text").value
+      fetch('/add_message/{{game_id}}', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ game_id: "{{game_id}}", text: textMessage })
+      })
+      .then(response => {
+        return response.json();
+      })
+      .then(data => {
+        var d = document.getElementById("messages");
+        d.innerHTML += '<p class="text-white fs-4"><span class="fs-6 mb-3" style="color: gray;">#' + data.id + '</span> <span class="fs-4">user#' + data.name + ': </span>' + textMessage + '</p>';
+        document.getElementById("text").value = "";
+      })
+      .catch(error => {
+        console.error('Ошибка:', error);
+      });
+    }
+
+  </script>
+
+
+{% endblock %}
